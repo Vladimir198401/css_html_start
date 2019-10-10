@@ -1,0 +1,158 @@
+*{
+	margin: 0;
+	padding: 1110;
+	font-family: Century Gothic;
+}
+body{
+	background-color: #ebeae6;
+	
+	}
+
+header{
+	position:relative;
+			height:50px;
+			background-color: #363636;
+			padding-top: 20px;
+}
+
+
+ul{
+	list-style-type: none;
+	margin-top: 0px;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	width: 1230px;
+}
+
+  ul li{
+	display: inline;
+	font-size: 25px;
+	padding: 0px;
+}
+
+ul li a{
+	text-decoration: none;
+	color: #ffffff;
+	padding: 5px 30px;
+	border: 1px solid transparent;
+	transition: 0.5s ease;
+}
+
+ul li a:hover{
+	background-color: #fff;
+	color: #000;
+}
+ul li.active a{
+	background-color: #fff;
+	color: #000;
+}
+
+.main{
+		
+		max-width: 1550px;
+		margin: auto;
+	}
+
+
+h1{
+		text-align: center;
+	}
+h2{
+		text-align: centre;
+		text-transform: initial;
+		position: absolute;
+		width:600px;
+		top: 40%;
+		left: 1250px;
+		font-size: 20px;
+	}
+	h3{
+		text-align: centre;
+		text-transform: initial;
+		position: absolute;
+		width:600px;
+		top: 50%;
+		left: 1150px;
+		font-size: 20px;
+	}
+	h4{
+		
+		text-transform: centre;
+		position: absolute;
+		width:600px;
+		top: 30%;
+		left: 1260px;
+		font-size: 20px;
+	}
+	h5{
+		text-align:right;
+		text-transform: uppercase;
+		position: absolute-relative;
+		top: 50%;
+		font-size: 60px;
+		left: 200px;
+		width:400px;
+		}
+		
+	#apacia {
+		display: block;
+		position: absolute;
+		background-color: #011926;
+		top: 105%;
+		width:2000px;
+		text-align: center;
+		height:190px;
+		padding-top:80px;
+		color: white;
+		font-size: 30px;
+		font-family:"Lucida Console", Monaco, monospace;
+		}
+	#knyga{
+		width: 400px;
+		border:1px solid grey;
+		position: realative;
+		height: auto;
+		margin-top: 250px;
+		margin-left: 100px;
+		-webkit-border-radius: 12px;
+		-moz-border-radius: 12px;
+		border-radius: 12px;
+
+		}
+	img{position: absolute-relative;
+		width:400px;
+		top: 70%;
+	}
+.mygtukas2{
+	
+	background-color: #f88e37;
+	text-transform: uppercase;
+	font-size: 28px;
+	color: white;
+	padding: 19px;
+	font-family: "Lucida Console", Monaco, monospace;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;	
+	border: 0px solid #00AA66;
+	text-align: center;
+	width: 1150px;
+	
+	
+	}
+.mygtukas {
+	background-color: #f88e37;
+	text-transform: uppercase;
+	font-size: 28px;
+	color: white;
+	padding: 19px;
+	font-family: "Lucida Console", Monaco, monospace;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;	
+	border: 0px solid #00AA66;
+	position: absolute;
+	width: 502px;
+	top: 60%;
+	left: 1170px;

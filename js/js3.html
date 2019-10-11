@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js puslapis </title>
+	<style>
+		label, input[type=text] {
+			display: block;
+		}
+	</style>
+	<script>
+		
+		function skaiciuoti() {
+		
+			skolinama_suma = parseInt ( document.getElementById ( "skolinama_suma" ).value );
+			palukanu_dydis = parseInt ( document.getElementById ( "palukanu_dydis" ).value );
+			palukanu_laikotarpis = parseInt ( document.getElementById ( "palukanu_laikotarpis" ).value );
+			
+			sumokama_suma = skolinama_suma + ( palukanu_dydis * palukanu_laikotarpis );
+			
+			res = document.getElementById ( "rez" );			
+			res.innerHTML = 'Iš viso su gražinimais sumokėsite: ' + sumokama_suma ;
+		}
+		
+	</script>
+</head>
+<body>
+Labas HTML
+Spresime kvadratinę lygtį<br>
+<label for="skolinama_suma">skolinama suma?</label>
+<input type="text" name="skolinama_suma" id="skolinama_suma" value="5000">
+<label for="laikotarpis">laikotarpis (mėn)?</label>
+<input type="text" name="laikotarpis" id="laikotarpis" value="12">
+<label for="palukanu_dydis">palūkanų dydis, %</label>
+<input type="text" name="palukanu_dydis" id="palukanu_dydis" value="9">
+<label for="palukanu_laikotarpis">palūkanų laikotarpis, (mėn.)</label>
+<input type="text" name="palukanu_laikotarpis" id="palukanu_laikotarpis" value="9">
+<input type="button" onClick="skaiciuoti()" value="skaiciuoti">
+<div id="rez">
+</div>
+</body>
+</html>

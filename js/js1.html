@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js puslapis </title>
+	<style>
+	</style>
+	<script>
+		alert ( 'labas jvascript' );
+		var a = 5;
+		b = 7;
+		d=222;
+		c = a + b;
+		a=b+d
+		
+		var res;
+		
+		function skaiciuoti() {
+		
+			f = parseInt ( document.getElementById ( "f" ).value );
+			daug = d * f;
+			res.innerHTML = ' d * f = ' + daug;
+		}
+		
+		window.addEventListener('load', function () {
+		
+			res = document.getElementById ( "rez" );
+			res.innerHTML = 'c = ' + c + ' a=' + a;
+					
+		}, false );
+		
+	</script>
+</head>
+<body>
+Labas HTML
+<input type="text" name="f" id="f" value="8">
+<input type="button" onClick="skaiciuoti()" value="skaiciuoti">
+<div id="rez">
+</div>
+</body>
+</html>

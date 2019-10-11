@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js puslapis </title>
+	<style>
+		label, input[type=text] {
+			display: block;
+		}
+	</style>
+	<script>
+		/*
+		* Prekybos įmonė atsiveža n prekiu uz s savikainą. Prekėms uždedamas antkainis a ir pvm. Pardavus 70% prekių įmonė skelbia akciją ir parduoda su nuolaida d procentais.
+		* Koks įmonės pelnas pardavus visas prekes?
+		*
+		*/
+		
+		function skaiciuoti() {
+		
+			res = document.getElementById ( "rez" );
+		
+			prekes_kekis = parseInt ( document.getElementById ( "prekes_kekis" ).value );
+			savikaina= parseInt ( document.getElementById ( "savikaina" ).value );
+			antkainis = parseInt ( document.getElementById ( "antkainis" ).value );
+			pvm= parseInt ( document.getElementById ( "pvm" ).value );
+			nuolaida= parseInt ( document.getElementById ( "nuolaida" ).value );
+			
+			pardavimo_suma_be_nuolaidos = 0.7 *  prekes_kekis + ( savikaina_nuolaida + antkainis + pvm);
+			
+						
+			res.innerHTML = 'Pardavimo suma be nuolaidos: ' + pardavimo_suma_be_nuolaidos + '<br>';
+			
+			
+			pardavimo_suma_su_nuolaida = 0.3 * prekes_kekis + (s+antkainis+pvm+nuolaida);
+			
+		
+			res.innerHTML += 'Pardavimo suma su nuolaida: ' + pardavimo_suma_su_nuolaida + '<br>';
+			res.innerHTML += '----------------------------------------------<br>' ;
+			res.innerHTML += 'Viso:  ' + ( pardavimo_suma_be_nuolaidos + pardavimo_suma_su_nuolaida ) ;			
+			
+		}
+		
+		
+		
+	</script>
+</head>
+<body>
+Labas HTML
+<br>
+<label for="prekes_kekis">preke_kekis?</label>
+<input type="text" name="prekes_kekis" id="prekes_kekis" value="5000">
+<label for="savikaina">savikaina ?</label>
+<input type="text" name="savikaina" id="savikaina" value="12">
+<label for="antkainis">antkainis, %</label>
+<input type="text" name="antkainis" id="antkainis" value="9">
+<label for="pvm">pvm, (mėn.)</label>
+<input type="text" name="pvm" id="pvm" value="9">
+<label for="nuolaida">nuolaida, (mėn.)</label>
+<input type="text" name="nuolaida" id="nuolaida" value="9">
+<input type="button" onClick="skaiciuoti()" value="skaiciuoti">
+<div id="rez">
+</div>
+</body>
+</html>

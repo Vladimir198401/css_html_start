@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>atvertimas</title>
+	<style>
+	label, input {
+		display: block;
+	}
+	table.res {
+		border-collapse: collapse;
+	}
+	table.res td, table.res th {
+		border: 1px solid black;
+	}
+	</style>
+	<script>
+		var dvl;
+				
+	function skaiciuoti() {
+	
+		res_str  = '';
+		sk_raid = [ 'a', 'b', 'c', 'd', 'e', 'f','g','h','i','j', ];           //  funkcios simboliu eilute
+		res = document.getElementById ( "rez" );			 // document.getElementById - naudojam perdoti  reiksme funkcijai 
+		dvl= document.getElementById ( "antroji" ).value;
+		suma = 0;						
+		str_suma= '';    					//funkcija ( naudojamas (ATSPINDINTIS) zodis pakeciantis skaicius ar tam tikras ju reiksmes  01223456789 +  -   = / *  < > ''
+		
+		kiekis = dvl.length;  // kiekis = tai perkeliama reiksme is dvl.length  tai  doto skaiciaus simboliu eilute
+		poz20_daugikl = 1;	//  funkcija ligu pozicija prasidiena nuo 1
+		
+		for ( i = 0; i < kiekis; i++ ) {			/*ciklas ("kilpa, ratu besikartojantis"), kartojantis koda, kelis kartus ji atkartoja iki nustatitos rybos
+										*	i=0	teiginys ivykdomas (1 karta) pries vykdant for kodu cikla . jame nustatoma kintamoji pries pradedant kilpa
+										*	i <  kiekis     sakinys nustato kodo bloko vykdymo saliga , sakinis apibudina kilpos paleidimo salyga  - i - maziau uz kiekis ( doto skaicius simboliu kiekis)
+										*	i++	teiginys vykdomas (kiekviena karta) ivykdzius kodo bloka, i++ padidina reiksme kaskart , kai vykdoma kilpa ( uzduodamas procesas, kaip bus panaudojus tam tikra funkcija)
+										* 	i  yra ciklo skaitiklis
+										*/
+
+		
+			skaitmuo = dvl [ kiekis -1 - i ];		// kad isgauti reikiama skaiciu is dvl, dvl priskiariamas eiles nr su funkcija (  [ kiekis -1 - i ] )   
+			
+			if ( sk_raid.indexOf ( skaitmuo ) !== -1 ) {     // jai  skaitmuo yra raide arba skaicius  ir neligi -1 ji perduodama toliau ir funkcijos cikle switch pakeiciama skaiciumi
+				
+				
+				//	if (  ( sk_simboliu = numerio_dalis_14.length ) < 4 ) {	// if   tikrinam ar funkcija ligi  sk_simboliu <4    . pries tai  sk_simboliu    priskiriamas reiksme    numerio_dalis_14.length 
+				
+				switch ( skaitmuo ) {			 // kol  skaitmuo  ligus raidei tada swithc cikle ji yra pakeiciama i  skaiciu priklausanciam tam skaiciui
+										//, ciklo funkcijos vigdomos pagal nuroditus parametrus, kai nebe , funkcija  while cikle nebevikdoma
+										//ciklas ("kilpa, ratu besikartojantis"), kartojantis koda, kelis kartus ji atkartoja iki nustatitos rybos
+				
+					case 'a': skaitmuo_sk = 10; break;
+					case 'b': skaitmuo_sk = 11; break;
+					case 'c': skaitmuo_sk = 12; break;		// priskiriama raides arba kaip sio atveju skaitmens reiksme, kitais atvejais gali but naudojami zodiai arba pavadinimai
+					case 'd': skaitmuo_sk = 13; break;
+					case 'e': skaitmuo_sk = 14; break;
+					case 'f': skaitmuo_sk = 15; break;	
+					case 'g': skaitmuo_sk = 16; break;
+					case 'h': skaitmuo_sk = 17; break;
+					case 'i': skaitmuo_sk = 18; break;
+					case 'j': skaitmuo_sk = 19; break;					
+				}
+			
+			} else {		// else  -  kodas, kuri  vykdome, jei salyga nera ivykdyta
+			
+				skaitmuo_sk = parseInt ( skaitmuo );   //perdarom? nuroditas raides, paverciam nuroditais skaiciais
+			} 
+			
+			if ( isNaN ( skaitmuo_sk ) ) {  
+				
+				str_suma = '<span class="error">?</span>'+suma;
+					suma=0;								/* tikrinam ar simbolis yra  skacius -  isNaN (skaitmuo_sk) jai jis nera skaicius mes ji panaudojam str_suma kitokiu atveju 
+														*    perduodama i else - koda
+														*  res_str =  '<span class="error">?</span>';  */
+				//  if  - Kodas, kuri vykdo, jei salyga yra ivigdita	  else  -  kodas, kurį vykdome, jei sąlyga nera ivykdyta		if else - skirtas naudoti kai jei atitinka salyga, tada vykdoma viena koda, kitu atveju kita.
+				
+				
+			} else {     //else  -  kodas, kuri vykdome, jei salyga nera ivykdyta,  jai if yra skaicius
+				
+				suma += skaitmuo_sk*poz20_daugikl;      // suma sudeda ir pliusoja gauta suma is gauto skaitmens kiris dauginamas is pozicijos daugiklio        233d  = (3)2 * 20 * 20 * 20 + (2)3 * 20 * 20 + (1)3 * 20 + (0)13 = 16000 + 1200 + 60 + 13 = 17273       
+			}
+			console.log( 'i: ' + i );			
+			console.log( 'skaitmuo: ' + skaitmuo );
+			console.log( 'skaitmuo_sk: ' + skaitmuo_sk  );
+			console.log( 'poz20_daugikl: ' + poz20_daugikl );
+			console.log( 'suma: ' + suma );			
+	
+			if ( i  ==  1 ) {
+			
+				poz20_daugikl *= 18;
+				
+			} else {
+			
+				poz20_daugikl *= 20;			
+			}
+			
+		}
+		str_suma=suma+str_suma;       
+		res_str =str_suma;			 //galutine reiksme
+		res.innerHTML = res_str ;		 // galutines riksmes atspidndis ekrane (front ende) parodimas
+	}
+	</script>
+</head>
+<body>
+	<label>šešioliktainis</label>
+	<input type="text" id="antroji" name="antroji" value="233d">
+	<hr>
+	<input type="button" id="skaiciuoti" name="skaiciuoti" value="skaiciuoti" onClick="skaiciuoti()">
+	<div id="rez">
+	</div>
+</body>
+</html>

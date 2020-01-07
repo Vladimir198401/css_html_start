@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>atvertimas</title>
+	<style>
+	label, input {
+		display: block;
+	}
+	table.res {
+		border-collapse: collapse;
+	}
+	table.res td, table.res th {
+		border: 1px solid black;
+	}
+	.error {
+		color: red;
+	}
+	</style>
+	<script>
+		var dvl;
+		
+		var skaitmuo_skx;
+		
+		var chars_hex = [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e' , 'f' ]; 
+			
+		var numbers = [ '0000', '0001', '0010' , '0011' , '0100', '0101', '0110', '0111', '1000', '1001', '1010', '1011', '1100' , '1101', '1110', '1111'];
+		
+		function skaiciuoti() {
+		
+			parinkimas_skaiciavimo = document.getElementById ( 'keit_tipas' );
+			
+			console.log ( 'par_sk: ' + parinkimas_skaiciavimo.value );
+
+			switch ( parinkimas_skaiciavimo.value ) {
+			
+				case '10_2': skaiciuoti_10_2(); break;
+				case '2_10': skaiciuoti_2_10(); break;
+				case '10_16': skaiciuoti_10_16(); break;
+				case '16_10': skaiciuoti_16_10(); break;
+				case '16_2': skaiciuoti_16_2(); break;
+				case '2_16': skaiciuoti_2_16(); break;
+				
+				default :
+				
+					alert ( 'klaida ' );
+			}
+		
+		}
+	</script>
+	<script src="skaiciuoti_2_16.js"></script>
+	<script src="skaiciuoti_2_10.js"></script>
+	<script src="skaiciuoti_16_2.js"></script>	
+	<script src="skaiciuoti_16_10.js"></script>	
+	<script src="skaiciuoti_10_2.js"></script>	
+	<script src="skaiciuoti_10_16.js"></script>	
+</head>
+<body>
+	<label>pasirinkite keitimą</label>
+	<select id="keit_tipas">
+		<option value="10_2">10 -> 2</option>
+		<option value="2_10">2 -> 10</option>
+		<option value="10_16">10 -> 16</option>
+		<option value="16_10">16 -> 10</option>
+		<option value="16_2">16 -> 2</option>
+		<option value="2_16">2 -> 16</option>
+	</select>
+	<label>keičiama reikšmė</label>					
+	<input type="text" id="antroji" name="antroji" value="101011101">
+	<hr>
+	<input type="button" id="skaiciuoti" name="skaiciuoti" value="skaiciuoti" onClick="skaiciuoti()">
+	rezultatas:
+	<div id="rez">
+	</div>
+</body>
+</html>

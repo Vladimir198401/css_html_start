@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>skaiciu i romenu</title>
+	<style>
+	label, input {
+		display: block;
+	}
+	table.res {
+		border-collapse: collapse;
+	}  
+	</style>
+	<script>
+	
+	function skaiciuoti (){
+	
+			res = document.getElementById ( "rez" );		     // document.getElementById - naudojam perdoti  reiksme funkcijai 	
+			vartotojo_ivedimas = document.getElementById ( "vartotojo_skaiciai" ).value;
+				
+			rs_suma = '';
+			
+		var skaiciai= [1000, 900, 500, 400, 300, 100, 90, 50, 40, 10, 9, 5, 4, 2, 1];
+		var romenu = ['M', 'CM', 'D',  'CD', 'CCC', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'II', 'I'];
+		
+			for ( i = 0; i < skaiciai.length; i++){		
+										/*	ciklas ("kilpa, ratu besikartojantis"), kartojantis koda, kelis kartus ji atkartoja iki nustatitos rybos
+										*	i=0	teiginys ivykdomas (1 karta) pries vykdant for kodu cikla . jame nustatoma kintamoji pries pradedant kilpa
+										*	i < skaiciai.length      sakinys nustato kodo bloko vykdymo saliga , sakinis apibudina kilpos paleidimo salyga  - i - maziau uz dvl.length ( doto skaiciaus simboliu kiekis)
+										*	i++	teiginys vykdomas (kiekviena… karta…) ivykdzius kodo bloka, i++ padidina reiksme kaskart , kai vykdoma kilpa ( uzduodamas procesas, kaip bus panaudojus tam tikra funkcija)
+										*	i yra ciklo skatiklis
+										*/
+				
+				while (vartotojo_ivedimas >= skaiciai[ i ]){    // kol vartotojo_ivedimas daugiau uz ivestus ligu skaicius itasis tai nuo 1000 iki 1;	ciklo funkcijos vigdomos pagal nuroditus parametrus, kai nebe , funkcija  while cikle nebevikdoma
+														//ciklas ("kilpa, ratu besikartojantis"), kartojantis koda, kelis kartus ji atkartoja iki nustatitos rybos
+					console.log(vartotojo_ivedimas)									
+															
+					rs_suma += romenu[ i ]  + '';  		  //  romenu_skaiciams perdodama romenu kintamojo var  itasis skaitmo liginamas su skaiciai ji pridedant ji imant nuo didziausio pats i eina nuo 1234 bet kintameji pas mane ivesti nuo didziausiu
+				
+					vartotojo_ivedimas -= skaiciai[ i ];	//  atimant varotojo ivedima ivigdomi 2 veiksmai tai kaip ir uzdaromas ciklas, kaskart atima po skaiciu  jei didesnis skaitmuo yra pris mazesni arba du skaitmenys yra vienodi, tai jie sudedami,
+												//  priskiriamas tam tikroi vetoi skaiciu, o jei mazesnis yra priez didesni, tai mazesnis atimamas iz didesnio
+					   
+												//Romeniškojo skaiciaus reikšme nustatoma taip:. Pavyzdžiui, DCCCXLIX = 500 + 300  +  40 + 9 = 849
+				
+										/*	 Isveda pranesima i interneto console. Pranesimas gali buti viena eilute
+										*	(su pasirenkamomis pakaitomis) arba tai gali buti vienas ar keli javascript objektai.
+										*	tai, ka parasome  i console, yra nuoroda i objekta , kuris tuomet nebutinai yra objekto verte,
+										*	kai panaudojat console.log( .... ), bet tai yra objekto verte tuo metu, kai atidarote console. */
+										
+					 console.log(skaiciai[i]); 					
+					 console.log([i]);						
+					 console.log(romenu[i]); 
+			}
+			
+		}
+		console.log('rs_suma:' + rs_suma);
+
+		res.innerHTML =  'suma '  +  rs_suma;  // galutines riksmes atspidndis ekrane (front ende) parodimas
+	}
+	</script>
+</head>
+<body>
+	<input type="text"  id="vartotojo_skaiciai" name="vartotojo_skaiciai" value="349">
+	<br>
+	<input type="button" id="skaiciuoti" name="skaiciuoti" value="skaiciuoti" onClick="skaiciuoti ()">
+	<div id="rez">
+	</div>
+</body>
+</html>

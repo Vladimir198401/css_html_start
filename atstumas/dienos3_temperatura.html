@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js puslapis </title>
+	<style>
+		label, input[type=text] {
+			display: block;
+		}
+		.myspan1{
+			color:green;	
+		}
+		.myspan {
+			color: red;
+		}
+	</style>
+	<script>
+		
+		skaicius_matavimu_per_diena = 4;
+		
+		function skaiciuoti() {
+		
+			res = document.getElementById ( "rez" );
+		
+			 temperaturos = document.getElementById ( "temperaturos" ).value.split(',');
+			 
+			 suma_temperaturu = 0;
+			 
+			skirtumas = 0; 
+			
+			rez_str = '';
+		
+			for ( i = 0; i <4 ; i++ )  {
+			
+				skirtumas = parseFloat(temperaturos [ i ]) - parseFloat(temperaturos [ i + 1 ]); 
+					
+				suma_temperaturu +=parseFloat(temperaturos[ i ]);
+				
+				rez_str += temperaturos[i]; 
+				rez_str += ' _ <span class="myspan1"> '+ skirtumas + '</span> _' ;
+				rez_str += ',' ;
+			}
+						
+			vid1=suma_temperaturu/skaicius_matavimu_per_diena;
+	
+			rez_str += 'paros temperaturu vidurkis:  ' + vid1 ;
+			
+			rez_str +='<br>';
+
+			suma_temperaturu = 0;
+				
+			for ( i = 4; i <8 ; i++ )
+			
+				{
+				skirtumas = parseFloat(temperaturos [ i ]) - parseFloat(temperaturos [ i + 1 ]); 
+					
+				suma_temperaturu +=parseFloat(temperaturos[ i ]);
+				
+				rez_str += temperaturos[i]; 
+				rez_str += ' _ <span class="myspan1"> '+ skirtumas + '</span> _' ;
+				rez_str += ',' ;
+			}
+			
+			vid2=suma_temperaturu / skaicius_matavimu_per_diena;
+			rez_str += 'paros temperaturu vidurkis:  ' + vid2 ;
+			rez_str += ' _skirtumas_par _ <span class="myspan"> '+ (vid1-vid2) + '</span> _' ;
+			skirtumas_par= vid1-vid2 ;
+			rez_str +='<br>';
+			suma_temperaturu = 0;
+			
+			for ( i = 8; i <12 ; i++ )
+			
+				{
+				skirtumas = parseFloat(temperaturos [ i ]) - parseFloat(temperaturos [ i + 1 ]); 
+					
+				suma_temperaturu +=parseFloat(temperaturos[ i ]);
+				
+				rez_str += temperaturos[i]; 
+				rez_str +=' _ <span class="myspan1"> '+ skirtumas + '</span> _' ;
+				rez_str += ',' ;
+				
+			}
+			
+			vid3=suma_temperaturu/skaicius_matavimu_per_diena;
+			rez_str += 'paros temperaturu vidurkis:  ' + vid3 ;
+			rez_str += ' _skirtumas_par _ <span class="myspan"> '+ (vid2-vid3) + '</span> _' ;
+			skirtumas_par= vid2-vid3 ;
+			rez_str +='<br>';
+	
+			res.innerHTML = rez_str;
+		}
+
+	</script>
+</head>
+
+<body>
+<br>
+	<label for="temperatura">temperatura</label>
+	<input type="text" name="temperaturos" id="temperaturos" value="36,30,32,29,28,30,32,24,30,30,20,27,27">
+<input type="button" onClick="skaiciuoti()" value="skaiciuoti">
+
+<div id="rez">
+</div>
+</body>
+</html>

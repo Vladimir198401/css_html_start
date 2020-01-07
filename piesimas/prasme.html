@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+	<meta charset="utf-8">
+	<title> prasme </title>
+	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+	<style>
+		h2{
+			font-size: 50px;
+			color: blue;
+			font-family: Lobster;
+		}
+			img{
+			border: 10px solid black;
+			padding: 12px;
+		}
+		  #katukas {
+		  background-color: green;
+		}
+		//  .red-text {
+		  //  color: red;
+		  }
+		canvas {
+			border: 10px solid black;			
+		}
+	</style>
+			<h2 class="red-text">parduodu labai grazu miela katinuka</h2>
+	<script>
+		var canvas;
+		var ctx;
+		var img;
+		
+		function pradzia() {
+		
+			canvas = document.getElementById ( 'sritis_piesimui' );
+			ctx = canvas.getContext( '2d' );
+			img = document.getElementById("katukas");
+			img.style.display = 'none';			
+		}
+		
+		function piesti() {
+		
+			ctx.beginPath();	
+			ctx.arc( 795, 100, 40, 20, 22 * Math.PI );
+			ctx.arc( 795, 200, 50, 5, 10 * Math.PI );
+			
+			ctx.drawImage(img, 10, 10); 				
+			
+			var grd = ctx.createLinearGradient(900, 300, 500, 300);
+			grd.addColorStop(0, "red");
+
+			 
+
+			ctx.fillStyle = grd;
+			ctx.fillRect( 900, 350, 500, 400); 				
+			
+			ctx.moveTo ( 750, 180 ); // nusiunčia pieštuką į pozicija x: 100 y: 100
+			ctx.lineTo ( 700,170 );  // brėžia liniją iki pozicijos  x: 200 y: 300
+			
+			ctx.moveTo ( 770, 185 ); // nusiunčia pieštuką į pozicija x: 100 y: 100
+			ctx.lineTo ( 690, 175 );  // brėžia liniją iki pozicijos  x: 200 y: 300
+
+			ctx.moveTo ( 850, 340 ); // nusiunčia pieštuką į pozicija x: 100 y: 100
+			ctx.lineTo ( 810,247 );  // brėžia liniją iki pozicijos  x: 200 y: 300
+			
+			ctx.moveTo ( 770, 340 ); // nusiunčia pieštuką į pozicija x: 100 y: 100
+			ctx.lineTo ( 800, 240 );  // brėžia liniją iki pozicijos  x: 200 y: 300
+
+			ctx.font = "40px Arial";
+			ctx.fillText( "parduodu katinuka", 215, 100 );
+			ctx.strokeText( "o", 757,105);
+			ctx.strokeText("skambinti numeriu 9889898", 215, 50); 
+			
+			ctx.stroke();
+		}
+	</script>
+</head>
+<body>
+          <canvas id="sritis_piesimui"  width="900" height="500"   style="background-color: lightblue;">
+	</canvas>
+	<input type="button" onClick="pradzia()" value="pradzia">	
+	<input type="button" onClick="piesti()" value="piešti">
+	<img src="katukas.jpg" id="katukas">
+</body>
+</html>

@@ -1,0 +1,13 @@
+
+	label, input {
+	
+		display: block;
+	}
+	table.res {
+	
+		border-collapse: collapse;
+	}
+	table.res td, table.res th {
+	
+		border: 1px solid black;
+	}

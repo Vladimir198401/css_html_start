@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js puslapis </title>
+	<style>
+		label, input[type=text] {
+			display: block;
+		}
+		.myspan1{
+			color:green;	
+		}
+		.myspan {
+			color: red;
+		}
+	</style>
+	<script>
+	
+		function dienos_temp ( temperaturos, diena, rez_str, vid ) {
+		
+			suma_temperaturu = 0;
+	
+			for ( i = 0; i <4 ; i++ )  {
+			
+				skirtumas = parseFloat(temperaturos [ diena * 4 + i ]) - parseFloat(temperaturos [ diena * 4 + i + 1 ]); 
+					
+				suma_temperaturu +=parseFloat(temperaturos[ diena * 4 + i ]);
+				
+				rez_str += temperaturos [ diena * 4 + i ]; 
+				rez_str += ' _ <span class="myspan1"> '+ skirtumas + '</span> _' ;
+				rez_str += ',' ;
+			}
+			// console.log ( rez_str );
+			vid [ diena + 1 ] = suma_temperaturu / 4;
+	
+			rez_str += 'paros temperaturu vidurkis:  ' + vid [ diena + 1 ];
+			skirtumas_par = vid [ diena ] - vid [ diena + 1 ] ;			
+			rez_str += ' _skirtumas_par _ <span class="myspan"> '+ skirtumas_par + '</span> _' ;
+			rez_str +='<br>';			
+			 // console.log ( rez_str );
+			return rez_str;
+		}
+	
+		function skaiciuoti() {
+		
+			res = document.getElementById ( "rez" );
+		
+			 temperaturos = document.getElementById ( "temperaturos" ).value.split(',');
+			 
+			rez_str = '';
+			
+			vid = [ 0 ];
+		
+			for ( diena = 0; diena < 3; diena++ ) {
+			
+				rez_str = dienos_temp ( temperaturos, diena, rez_str , vid );
+				 console.log ( rez_str );
+			}	
+			
+			res.innerHTML = rez_str;
+		}
+	</script>
+</head>
+<body>
+<br>
+	<label for="temperatura">temperatura</label>
+	<input type="text" name="temperaturos" id="temperaturos" value="36,30,32,29,28,30,32,24,30,30,20,27,27">
+<input type="button" onClick="skaiciuoti()" value="skaiciuoti">
+
+<div id="rez">
+</div>
+</body>
+</html>

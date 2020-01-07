@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="utf-8">
+	<title>
+		Pagautu zuvu daliba
+	</title>
+	<style>
+		 
+	</style>
+	<script>
+			
+		function zuvis() {
+		
+			X = parseInt ( document.getElementById ( 'a' ).value );
+			Y = parseInt ( document.getElementById ( 'b' ).value );
+			
+			
+			rez_str = ' Nuo ' + X + ' Iki ' + Y;
+			rez_str += '<br>';
+		//	rez_str += Y;
+			
+			
+				//	pirmas zvejys = zuvys - ((zuvys - 1) / 3)
+				//	antras zvejys = pirmas zvejys - ((pirmas zvejys - 1) / 3))
+				//	trecias zvejys = antras zvejys - ((antras zvejys -1) / 3))
+					
+					
+				a = X;
+				b = Y;
+							
+				for ( a = X; a < Y; a++ ) {
+				
+					if (((a - 1)%3) == 0)	{
+					
+						b = (a - 1) - ((a - 1) / 3);
+																
+					//	rez_str += 'pirmas  ' +a + ' ir ' +b;
+					//	rez_str += '<br>';
+						
+						if (((b - 1)%3) == 0)	{
+						
+							c = (b - 1) - ((b - 1) / 3);
+								
+							//	rez_str += 'antras  ' +a +' ir ' +b +' ir ' +c;
+							//	rez_str += '<br>';
+								
+								if (((c - 1)%3) == 0)	{
+									rez_str += 'Galejo buti ' +a  + ' zuvys';
+									rez_str += '<br>';
+							
+							}
+						
+						}	
+					}
+				}
+			
+			rez = document.getElementById ( 'rez' );
+			rez.innerHTML = rez_str; 
+			
+		}					
+	</script>
+</head>
+<body>Galejo buti zuvu <br>
+		
+	Nuo?<br>
+	<input type="text" id="a" style="width: 60px" ><br>
+	Iki?<br>
+	<input type="text" id="b" style="width: 60px" ><br>
+	
+	<input type="button" onClick="zuvis()" value="paskaiciuokim">
+	
+	<div id="rez">
+	</div>
+</body>
+</html>

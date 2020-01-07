@@ -1,0 +1,75 @@
+	---------- fizika tokia ------ : https://www.youtube.com/watch?v=mh6zDf6Erh8
+	
+	s = v * t,
+	s - nukristas kelias, v - greitis, t - laikas
+	
+	F = G ( mz * mk ) / r ^ 2 
+	F - traukos jega, pagal  https://lt.wikipedia.org/wiki/Niutono_gravitacijos_d%C4%97snis
+	mz - zemes mase
+	mk - kuno mase
+	r - tai yra tas pats aukštis (h)
+	
+	F = mk * a  
+	a - pagreitis
+	
+	kaip surasti a:
+	a = F / mk = ( G ( mz * mk ) / r ^ 2 )  / mk  = ( G  * ( mz ) / r ^ 2 )
+
+	
+	
+	kaip keiciasi kelias:
+
+	s = v * t + a * t ^ 2 / 2
+
+	kaip keiciasi greitis:
+
+	v = v + a * t
+
+	
+	--------------------------------
+	
+	
+	programa turi veikti taip:
+	
+	t = 0
+	
+	 ------ ciklas: 
+		s =  ( ( ( G  * ( mz ) / r ^ 2 ) * t ^ 2 ) / 2 ) * t  // vis suskaiciuojam s
+		
+										//  ir uzrasom i lentele  t ir s  ---
+		t += delta_t
+	------   ciklo pabaiga
+	
+	
+	sudaryti laiko ir nukristo atstumo lentele, pvz:
+	------------------
+	|     t     |    s   |
+	------------------
+	|    1     |  0.5  |
+	|    2     |  1.1  |
+	|    3     |  1.4  |
+	.....
+	
+	
+	var a = 5;
+		b = 7;
+		d=222;
+		c = a + b;
+		a=b+d
+		
+		var res;
+		
+		function skaiciuoti() {
+		
+			f = parseInt ( document.getElementById ( "f" ).value );
+			daug = d * f;
+			res.innerHTML = ' d * f = ' + daug;
+		}
+		
+		window.addEventListener('load', function () {
+		
+			res = document.getElementById ( "rez" );
+			res.innerHTML = 'c = ' + c + ' a=' + a;
+					
+		}, false );
+	

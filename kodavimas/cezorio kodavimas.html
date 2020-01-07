@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>cezorio kodavimas</title>
+	<style>
+		#forma {
+			width: 500px;
+		}
+		label {
+			width: 100%;
+		}
+		tekstas {
+		}
+	</style>
+	<script>
+		var 
+			taskas = '&middot;', bruksnys = '&ndash;';
+			raides = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',  
+				
+				'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+				'.', ',', '?', "'", '!', '/', '(', ')', ' &', ':', ';', '=', '–', '_', '"', '$', '@'
+			];
+			/*
+				Trupmenos brūkšnelis (matematikoje)	-··-·                                       ! neužkoduota
+			*/
+			lt_raides = [ 'Ą', 'Č', 'Ę', 'Ė', 'Į', 'Š', 'Ų', 'Ū', 'Ž' ];
+			lot_raides = [ 'A', 'C', 'E', 'E', 'I', 'S', 'U', 'U', 'Z'  ];
+			
+			nesukeisti  = [ ' ' , '\t', '\n' ];
+			
+		function sukeisti ( eilute, i )	 {
+		
+			return eilute.substr ( 0, i )  +  eilute [ i + 1 ] + eilute [ i ] + eilute.substr ( i +  2 );
+		}
+	
+		function sifruoti() {
+		
+			tekstas = document.getElementById ( 'tekstas' ).innerHTML;
+			tekstas_res = '';
+			
+			  lt_simb = [];
+			
+			/**
+			* šifravimas Cezario šifru
+			*/
+			iki = tekstas.length;
+			
+			if ( ( tekstas.length % 2 ) != 0 ) {
+			
+				iki = tekstas.length - 1;
+			}
+			
+			for ( i = 0; i< iki; i+=2 ) {
+			
+			           //console.log ( i + " " + tekstas [ i ]  + "~" + tekstas [ i + 1 ] + ": "+ ( ( tekstas [ i ]  != ' ' ) && ( tekstas [ i + 1 ] !=  ' ' ) ) );
+			
+				if ( ( nesukeisti.indexOf ( tekstas [ i ] ) == - 1 ) && ( nesukeisti.indexOf ( tekstas [ i + 1 ] ) == -1 ) ) { 
+					
+					tekstas = sukeisti ( tekstas, i );
+				}
+			}
+			 tekstas_res = tekstas;
+			
+			res = document.getElementById ( 'res' );
+			res.innerHTML =  tekstas_res;
+		}
+	</script>
+</head>
+<body>
+	<h3>Teksto šifravimas ir keitimas pagal morzes abėcėlę</h3>
+		<div id="forma">
+		<label for="tekstas">Keičiamas tekstas</label>
+	<textarea id="tekstas" rows="20" cols="140">
+	Miego trūkumas kenkia praktiškai visoms organizmo funkcijoms. 
+	Jei prastai miegosite, susidursite su virškinimo problemomis, širdies sveikatos bėdomis, išaugusia protinių ligų rizika ir 
+	daugybe kitų grėsmių, kurių jums tiesiog nereikia. Ir vis dėlto daugybė žmonių nesilaiko miego režimo.
+	Jei miegoti neinate,nes norite užbaigti dienos darbus, darote labai didelę klaidą.
+	Mokslininkai pakvietė 138 žmones dalyvauti tyrime. 77 nemiegojo visą naktį, 61 gerai išsimiegojo savo lovoje. 
+	</textarea>
+		</div>
+	<input type="button" id="vykdyti" value="keisti" onClick="sifruoti()">
+		<div id="res">
+	</div>
+</body>
+</html>

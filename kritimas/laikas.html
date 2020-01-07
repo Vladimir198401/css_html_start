@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="bendri-stiliai.css">
+	<meta charset="utf-8">
+	<title>laikas</title>
+	<style>
+	</style>
+	<script>
+	
+		function skaiciuoti() {
+		
+			res = document.getElementById ( "rez" );
+
+			sek_viso = parseFloat ( document.getElementById ( "laikas" ).value );
+			
+			sek = sek_viso % 60;
+			
+			min_viso = parseInt ( sek_viso /  60);
+			
+			min = min_viso % 60;
+			
+			val_viso = parseInt (min_viso/60);
+			
+			val = val_viso % 24; 
+			
+			par_viso = parseInt (val_viso/24);
+			
+			par = par_viso % 24;
+			
+			res_str = par + ':' +val + ':'+ min + ':' + sek;
+			
+			res.innerHTML = res_str ;
+		}
+
+		
+	</script>
+</head>
+<body>
+	<label>laikas, s?</label>
+	<input type="text" id="laikas" name="laikas" value="396527">
+	<hr>
+	<input type="button" id="skaic" name="skaic" value="skaiciuoti" onClick="skaiciuoti()">
+	<div id="rez">
+	</div>
+</body>
+</html>

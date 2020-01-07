@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>morzė ir cezaris</title>
+	<style>
+		#forma {
+			width: 500px;
+		}
+		label {
+			width: 100%;
+		}
+		tekstas {
+		}
+	</style>
+	<script>
+		var 
+			 
+			lt_raides = [ 'Ą', 'Č', 'Ę', 'Ė', 'Į', 'Š', 'Ų', 'Ū', 'Ž' ];
+			lot_raides = [ 'A', 'C', 'E', 'E', 'I', 'S', 'U', 'U', 'Z'  ];
+			
+			raides = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',   
+			
+					'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+					'.', ',', '?', "'", '!', '/', '(', ')', ' &', ':', ';', '=', '–', '_', '"', '$', '@'
+			];
+			
+			morzes = [ '·-', '-···', '-·-·', '-··', '·', '··-·', '--·', '····', '··', '·---', '-·-', '·-··', '--', '-·', '---', '·--·', '--·-', '·-·', '···', '-', '··-', '···-', '·--', '-··-', '-·--', '--··', 
+				
+				'-----', '·----', '··---', '···--', '····-', '·····', '-····', '--···', '---··', '----·',
+				'·-·-·-', '--··--', '··--··', '·----·', '-·-·--', '-··-·', '-·--·', '-·--·-', '·-···', '---···', '-·-·-·', '-···-', '-····-', '··-- ·-', '·-··-·', '···-··-', '·--·-·'
+			];
+			
+			/*
+				Trupmenos brūkšnelis (matematikoje)	-··-·    ! neužkoduota
+			*/
+		function sifruoti() {
+		
+			tekstas = document.getElementById ( 'tekstas' ).innerHTML;
+			tekstas_res = ''; 
+			
+			for ( i = 0; i < tekstas.length; i++ ) {  // ciklas besisukantis ratu
+			
+				if ( (  num_lot_raides = lt_raides.indexOf ( tekstas [ i ].toUpperCase() ) ) !==  - 1 ) { 	
+																				
+					 //  num_lot_raides = priskiaramas eilutes simbolis naudojant lt_raides.indexOf kuri istraukia is 
+					//( tekstas [ i ].toUpperCase() ) ) !==  - 1 ); kuri  reiskia duoto skaiciaus pozicijos numeri lt_raides masyve
+					// lt_raides yra simboliu masyvas, dotu simboliu eilute.. masyvas globaliai aprasytsas, naudojamas virs fukction 
+					// indexOf yra metodas . funkcija priklausanti objektui vadinama  metodu , java ir javaskrypte masivas yra objektas. objektas yra domenis apjunkti su tos domenis tvarkanciomis funkcijomis
+					//( tekstas [ i ].toUpperCase() ) ) !==  - 1 );  teksto simboliams priskirimas numeris, toUpperCase pakeicia mazus simbolius priskirtais didileis
+					// funkcija if vigdoma jaigu is teksto [ i ] simboliai neturi   ) ) !==  - 1 ); reiksmes -1      
+				  
+					simbolis = lot_raides [ num_lot_raides ];
+					
+				} else {
+				
+					simbolis = tekstas [ i ].toUpperCase();
+				}
+				
+				if ( ( num_raides = raides.indexOf ( simbolis ) ) !== -1 ) {  //num_raides = priskiriamas eilutes simbolis
+				
+					morzes_simb = morzes [ num_raides ];
+					tekstas_res += morzes_simb + ' ';
+					
+				} else {
+				
+					if ( simbolis == ' ' ) {
+						
+						tekstas_res += '  ';
+						
+					} else {
+					
+						tekstas_res += simbolis;
+					}
+				}
+			}
+			res = document.getElementById ( 'res' );
+			res.innerHTML =  tekstas_res;
+		}
+	</script>
+</head>
+<body>
+	<h3>Teksto šifravimas ir keitimas pagal morzes abėcėlę</h3>
+	
+		<div id="forma">
+		<label for="tekstas">Keičiamas tekstas</label>
+	<textarea id="tekstas" rows="18" cols="190">
+	Miego trūkumas kenkia praktiškai visoms organizmo funkcijoms. 
+	Jei prastai miegosite, susidursite su virškinimo problemomis, širdies sveikatos bėdomis, išaugusia protinių ligų rizika ir daugybe kitų grėsmių, 
+	kurių jums tiesiog nereikia. Ir vis dėlto daugybė žmonių nesilaiko miego režimo. 
+	Jei miegoti neinate,nes norite užbaigti dienos darbus, darote labai didelę klaidą. 
+	Mokslininkai pakvietė 138 žmones dalyvauti tyrime. 77 nemiegojo visą naktį, 61 gerai išsimiegojo savo lovoje. 
+	Dar vakare dalyviai atliko du testus. Vienas bandymas matavo reakcijos laiką, kitas – gebėjimą išlaikyti veiksmų seką. 
+	Pastarasis testas yra labai įdomus, nes jis matuoja kognityvines galimybes išlaikyti dėmesį, prisiminti savo paskutinį veiksmą ir planuoti kitą. 
+	Tuos pačius bandymus dalyviai atliko ir ryte.
+	Skaitykite daugiau: https://www.delfi.lt/mokslas/mokslas/miego-trukumas-mus-veikia-zymiai-labiau-nei-manyta-siandien-gulkites-anksciau.d?id=82944441
+	</textarea>
+		</div>
+		
+	<input type="button" id="vykdyti" value="keisti" onClick="sifruoti()">
+	
+	<div id="res">
+	</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js puslapis </title>
+	<style>
+		label, input[type=text] {
+			display: block;
+		}
+	</style>
+	<script>
+	
+		function skaiciuoti() {
+			
+			
+			res = document.getElementById ( "rez" );
+			
+			atstumai = document.getElementById ( "atstumai" ).value.split ( ',' )
+			
+			sustoimai = parseFloat  (document.getElementById ( "sustoimai" ).value );
+			
+			greitis = parseFloat ( document.getElementById ( "greitis" ).value );
+			
+			laikas_st= [];
+
+			for (  i = 0; i < atstumai.length ; i++ ) {
+			
+				laikas_st.push  ( parseFloat( atstumai [ i ] ) / greitis  * 60 );				
+			}
+
+	
+			res.innerHTML += '<br>-' ;
+			
+				laikas_1 = 0;
+			
+			for ( i = 0; i < laikas_st.length; i++ ) {
+				
+				laikas_2 = laikas_st[ i ];
+				
+				laikas =  laikas_1 + laikas_2;
+				
+				laikas_1 = laikas;
+				
+				res.innerHTML +='laikas_st' + ( i +1 ) + ' (' + i + '): ' + laikas + ' min.'; 
+				res.innerHTML += '-<br>-<br>' ;
+				
+			}
+				viso=0;
+				
+			for ( i = 0; i < laikas_st.length; i++ ) {
+			
+				viso += laikas_st [ i ];
+			}
+
+			res.innerHTML += 'Viso:  ' + viso + 'min.' ;
+			
+			res.innerHTML +=' + sustoimai: ' + sustoimai + ' min.';
+			
+		}
+		
+	</script>
+</head>
+<body>
+Keliones paskaiciavimas
+<br>
+<label for="sustoimai">sustoimai, min?</label>
+<input type="text" name="sustoimai" id="sustoimai" value="20">
+
+<label for="atstumai">kiti atstumai, km?</label>
+<input type="text" name="atstumai" id="atstumai" value="20,25,22,50">
+
+<label for="greitis">greitis, km/h</label>
+<input type="text" name="greitis" id="greitis" value="120">
+
+<input type="button" onClick="skaiciuoti()" value="skaiciuoti">
+
+<div id="rez">
+</div>
+</body>
+</html>

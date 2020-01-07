@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>rom</title>
+<style>
+label, input {
+	display: block;
+}
+table.res {
+	border-collapse: collapse;
+}
+table.res td, table.res th {
+	border: 1px solid black;
+}
+</style>
+<script>
+ 
+	function skaiciuoti() {
+
+			res_str  = '';
+			res = document.getElementById ( "rez" );			 // document.getElementById - naudojam perdoti  reiksme funkcijai 
+			ivedimas= document.getElementById ( "antroji" ).value;
+		
+		function romanToArabic(roman){
+			    if(roman == null)
+				return -1;
+			    var totalValue = 0, 
+				value = 0, // Initialise!
+				prev = 0;
+				
+			    for(var i=0;i<roman.length;i++){
+				var current = char_to_int(roman.charAt(i));
+				if (current > prev) {
+				    // Undo the addition that was done, turn it into subtraction
+				    totalValue -= 2 * value;
+				}
+				if (current !== prev) { // Different symbol?
+				    value = 0; // reset the sum for the new symbol
+				}
+				value += current; // keep adding same symbols
+				totalValue += current;
+				prev = current;
+			    }
+			    return totalValue;
+			}
+
+			function char_to_int(character) {
+			    switch(character){
+				case 'I': return 1;
+				case 'V': return 5;
+				case 'X': return 10;
+				case 'L': return 50;
+				case 'C': return 100;
+				case 'D': return 500;
+				case 'M': return 1000;
+				default: return -1;
+			    }
+			}
+
+			console.log(romanToArabic('DCCCXLIX'));
+
+}
+</script>
+</head>
+<body>
+	<label></label>
+	<input type="text" id="antroji" name="antroji" value="DCCCXLIX">
+	<input type="button" id="skaiciuoti" name="skaiciuoti" value="skaiciuoti" onClick="skaiciuoti()">
+	<div id="rez">
+	</div>
+</body>
+</html>

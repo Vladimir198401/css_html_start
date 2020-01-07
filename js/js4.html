@@ -9,11 +9,6 @@
 		}
 	</style>
 	<script>
-		/*
-		* Prekybos įmonė atsiveža n prekiu uz s savikainą. Prekėms uždedamas antkainis a ir pvm. Pardavus 70% prekių įmonė skelbia akciją ir parduoda su nuolaida d procentais.
-		* Koks įmonės pelnas pardavus visas prekes?
-		*
-		*/
 		
 		function skaiciuoti() {
 		
@@ -24,23 +19,35 @@
 			antkainis = parseInt ( document.getElementById ( "antkainis" ).value );
 			pvm= parseInt ( document.getElementById ( "pvm" ).value );
 			nuolaida= parseInt ( document.getElementById ( "nuolaida" ).value );
+			likutis=parseInt( document.getElementById ( "likutis" ).value );
+			pelno_mokestis= parseInt ( document.getElementById ( "pelno_mokestis" ).value );
 			
-			pardavimo_suma_be_nuolaidos = 0.7 *  prekes_kekis + ( savikaina_nuolaida + antkainis + pvm);
+			
+			
+			pardavimo_suma_be_nuolaidos = 0.7* (prekes_kekis * savikaina) + (prekes_kekis*savikaina/100*pvm)+ (prekes_kekis*savikaina/100 *antkainis) ;
 			
 						
 			res.innerHTML = 'Pardavimo suma be nuolaidos: ' + pardavimo_suma_be_nuolaidos + '<br>';
 			
 			
-			pardavimo_suma_su_nuolaida = 0.3 * prekes_kekis + (s+antkainis+pvm+nuolaida);
+			pardavimo_suma_su_nuolaida = 0.3* ( prekes_kekis * savikaina) + (prekes_kekis*savikaina/100*pvm)+ (prekes_kekis*savikaina/100*antkainis) - (prekes_kekis*savikaina/100*nuolaida)-(likutis*savikaina);
+			
+			
+			pelno_mokestis= (pardavimo_suma_be_nuolaidos + pardavimo_suma_su_nuolaida-likutis*savikaina)/100*5  ;
 			
 		
 			res.innerHTML += 'Pardavimo suma su nuolaida: ' + pardavimo_suma_su_nuolaida + '<br>';
-			res.innerHTML += '----------------------------------------------<br>' ;
+			res.innerHTML += '<br>--------------' ;
+			
 			res.innerHTML += 'Viso:  ' + ( pardavimo_suma_be_nuolaidos + pardavimo_suma_su_nuolaida ) ;			
+			res.innerHTML += '----------------<br> <br>' ;
+			
+			res.innerHTML += 'likutis: ' + likutis + '<br>';
+			res.innerHTML += '--------------<br>' ;
+			
+			res.innerHTML += 'pelno_mokestis: ' + pelno_mokestis;
 			
 		}
-		
-		
 		
 	</script>
 </head>
@@ -50,14 +57,19 @@ Labas HTML
 <label for="prekes_kekis">preke_kekis?</label>
 <input type="text" name="prekes_kekis" id="prekes_kekis" value="5000">
 <label for="savikaina">savikaina ?</label>
-<input type="text" name="savikaina" id="savikaina" value="12">
+<input type="text" name="savikaina" id="savikaina" value="10">
 <label for="antkainis">antkainis, %</label>
 <input type="text" name="antkainis" id="antkainis" value="9">
-<label for="pvm">pvm, (mėn.)</label>
-<input type="text" name="pvm" id="pvm" value="9">
-<label for="nuolaida">nuolaida, (mėn.)</label>
+<label for="pvm">pvm, %)</label>
+<input type="text" name="pvm" id="pvm" value="20">
+<label for="nuolaida">nuolaida, %</label>
 <input type="text" name="nuolaida" id="nuolaida" value="9">
+<label for="likutis">likutis?</label>
+<input type="text" name="likutis" id="likutis" value="">
+<label for="pelno_mokestis">pelno_mokestis?</label>
+<input type="text" name="pelno_mokestis" id="pelno_mokestis" value="5%">
 <input type="button" onClick="skaiciuoti()" value="skaiciuoti">
+
 <div id="rez">
 </div>
 </body>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js puslapis </title>
+	<style>
+		label, input[type=text] {
+			display: block;
+		}
+		.myspan {
+			color: Aqua;
+		}
+		.temp_kyla {
+			color: red;
+		}
+		.temp_krenta {
+			color: blue;
+		}
+		.nulis {
+		
+			color: green;
+		}
+	</style>
+	<script>
+		
+		function skaiciuoti() {
+		
+			res = document.getElementById ( "rez" );
+		
+			 temperaturos = document.getElementById ( "temperaturos" ).value.split(',');
+			 
+			 suma_temperaturu = 0;
+			 
+			skirtumas = 0; 
+			
+			rez_str = '';
+			
+			vid_p = 0;
+		
+			for ( diena = 0; diena < 3; diena++ ) {
+			
+				suma_temperaturu = 0;
+		
+				for ( i = 0; i <4 ; i++ )  {
+				
+					skirtumas = parseFloat(temperaturos [ diena * 4 + i ]) - parseFloat(temperaturos [ diena * 4 + i + 1 ]); 
+						
+					suma_temperaturu +=parseFloat(temperaturos[ diena * 4 + i ]);
+					
+					rez_str += temperaturos[ diena * 4 + i ]; 
+					
+					css_klase = 'nulis';
+					
+					if ( skirtumas < 0 ) {
+					
+						css_klase ='temp_krenta';
+						
+					} else {
+					
+						if ( skirtumas > 0 ) {
+						
+							css_klase = 'temp_kyla';
+						}
+					}
+					
+					rez_str += ' _ <span class="' + css_klase + '"> '+ skirtumas + '</span> _' ;
+					rez_str += ',' ;
+				}
+							
+				vid=suma_temperaturu/i;
+		
+				rez_str += 'paros temperaturu vidurkis:  ' + vid ;
+				
+				skirtumas_par= vid_p - vid ;			
+				rez_str += ' _skirtumas_par _ <span class="myspan"> '+ skirtumas_par + '</span> _' ;				
+				
+				rez_str +='<br>';
+				vid_p = vid;
+
+			}	
+			
+			res.innerHTML = rez_str;
+		}
+	</script>
+</head>
+
+<body>
+<br>
+	<label for="temperatura">temperatura</label>
+	<input type="text" name="temperaturos" id="temperaturos" value="36,30,32,32,28,30,32,24,30,30,20,27,27">
+<input type="button" onClick="skaiciuoti()" value="skaiciuoti">
+
+<div id="rez">
+</div>
+</body>
+</html>

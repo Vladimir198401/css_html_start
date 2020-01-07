@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Kosmines_geles</title>
+	<style>
+	label, input {
+		display: block;
+	}
+	table.res {
+		border-collapse: collapse;
+	}
+	table.res td, table.res th {
+		border: 2 px solid black;
+	}
+	</style>
+	<script>
+			
+		function skaiciuoti() {
+			
+				res_str = '';
+				res = document.getElementById ( 'rez' );				// document.getElementById - naudojam perdoti  reiksme funkcijai 
+				
+				S = document.getElementById("Augalu pradzioje").value;
+				K = document.getElementById("K").value;
+				T = document.getElementById("Seklu po 4 metu").value;
+				M = document.getElementById("Metu skaicius").value;
+				
+				Augalas="";
+			  
+				for ( i = 0 ; i <= 5 ; i++ ) {   // 
+			
+						 Augalas = S *  K * i ;
+						// S * i + T
+						 
+						//console.log( 'K' + K );
+						console.log( 'S' + S );
+						console.log( 'M' + M);
+						console.log( 'i' + i);
+						///console.log( 'T' + T );
+						//console.log( 'Augalu_tryju_metu ' + Augalu_tryju_metu );
+						//console.log( 'Augalu_penkiu_metu ' + Augalu_penkiu_metu );
+						console.log( 'Augalas ' + Augalas );
+				}
+				
+	
+			//Augalu_kiekis + res_str;
+			
+			//rez.innerHTML  += 'Augalu_kiekis '  +  Augalas ;
+			
+		}					
+	</script>
+</head>
+<body>
+<label>Augalu pradzioje</label>
+	<input type="text" id="Augalu pradzioje" name="Augalu pradzioje" value=" 1 "><br>
+
+<label>Seklu po 2 metu</label>
+	<input type="text" id="K" name="K" value=" 1 "><br>
+<label>Seklu po 4 metu</label>
+	<input type="text" id="Seklu po 4 metu" name="Seklu po 4 metu" value=" 1 "><br>
+<label>Metu skaicius</label>
+	<input type="text" id="Metu skaicius" name="Metu skaicius" value=" 5 "><br> 	
+	<input type="button" id="skaiciuoti" name="skaiciuoti" value="skaiciuoti" onClick="skaiciuoti()">
+	<div id="rez">
+	</div>
+</body>
+</html>

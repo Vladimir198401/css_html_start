@@ -10,7 +10,7 @@
 	</style>
 	<script>
 	
-		function skaiciuoti() {
+	function skaiciuoti() {
 			
 			
 			res = document.getElementById ( "rez" );
@@ -21,43 +21,21 @@
 			
 			greitis = parseFloat ( document.getElementById ( "greitis" ).value );
 			
-			laikas_st= [];
-
+			
+			laikas = 0;
+			viso=0;
+			
 			for (  i = 0; i < atstumai.length ; i++ ) {
-			
-				laikas_st.push  ( parseFloat( atstumai [ i ] ) / greitis  * 60 );				
-			}
-
-	
-			res.innerHTML += '<br>-' ;
-			
-				laikas_1 = 0;
-			
-			for ( i = 0; i < laikas_st.length; i++ ) {
-				
-				laikas_2 = laikas_st[ i ];
-				
-				laikas =  laikas_1 + laikas_2;
-				
-				laikas_1 = laikas;
-				
-				res.innerHTML +='laikas_st' + ( i +1 ) + ' (' + i + '): ' + laikas + ' min.'; 
-				res.innerHTML += '-<br>-<br>' ;
-				
-			}
-				viso=0;
-				
-			for ( i = 0; i < laikas_st.length; i++ ) {
-			
-				viso += laikas_st [ i ];
-			}
-
-			res.innerHTML += 'Viso:  ' + viso + 'min.' ;
-			
-			res.innerHTML +=' + sustoimai: ' + sustoimai + ' min.';
-			
-		}
 		
+				laikas_st = ( parseFloat( atstumai [ i ] / greitis) * 60) ;
+				
+				laikas += laikas_st;
+				
+				res.innerHTML +='vaziavimo_laikas: ' + ( i +1 ) + "stotele: "   + laikas + 'min.'; 
+				res.innerHTML += '<br> <br>' ;
+			}
+		res.innerHTML += 'Viso:  ' + laikas + 'min.' + ' + sustoimai: ' + sustoimai + ' min.';
+	}
 	</script>
 </head>
 <body>
@@ -73,7 +51,6 @@ Keliones paskaiciavimas
 <input type="text" name="greitis" id="greitis" value="120">
 
 <input type="button" onClick="skaiciuoti()" value="skaiciuoti">
-
 <div id="rez">
 </div>
 </body>
